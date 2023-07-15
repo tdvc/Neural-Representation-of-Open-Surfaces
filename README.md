@@ -2,6 +2,8 @@
 
 This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). 
 
+Also, see the [project page](https://www.thorshammer.dk/projectpages/ssdf.html). for this work.
+
 ## Citation
 
 If you find our work useful, please cite the paper: 
@@ -42,12 +44,12 @@ pip install -r requirements.txt
 ```
 
 ## Usage 
-In order to use this code, you need to split your triangle meshes in .obj file formats into a training set and a test set. Then you should place the training meshes inside the train folder under experiment -> your experiment -> data -> train. The same thing goes for the test meshes, which should be put into the test folder at the same location as the train folder. 
+In order to use this code, you need to split your files into a training set and a test set. Then you should place the training meshes inside the train folder under experiment -> your experiment -> data -> train. The same thing goes for the test meshes, which should be put into the test folder at the same location as the train folder.
 
-Be aware: It is assumed that the meshes are aligned on beforehand (This can be done manually, using landmarks or simple ICP). Moreover, it is assumed that the meshes have been centered around the origin and scaled in such a way that they fit inside the unit sphere.
+Note: It is assumed that the meshes are aligned on beforehand (This can be done manually, using landmarks or simple ICP). Moreover, it is assumed that the meshes have been centered around the origin and scaled in such a way that they fit inside the unit sphere. Lastly, the files should be triangle meshes in .obj file format.
 
 ### Train and Inference
-It is possible to train two different kinds of networks. One that learns SSDF and another which learns GWN. To train the SSDF network, simply go into the folder "your_experiment" and run: 
+It is possible to train two different kinds of networks. One network that learns two signals: SSDF and UDF and another network which approximates the GWN. To train the SSDF network, simply go into the folder "your_experiment" and run: 
 
 ```
 python ../../train.py "your_experiment" "ssdf"
