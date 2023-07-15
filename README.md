@@ -2,7 +2,7 @@
 
 This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). 
 
-Also, see the [project page](https://www.thorshammer.dk/projectpages/ssdf.html) for this work.
+For more details about the project, please visit the [project page](https://www.thorshammer.dk/projectpages/ssdf.html) for this work.
 
 ## Citation
 
