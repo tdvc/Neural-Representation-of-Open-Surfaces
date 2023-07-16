@@ -48,6 +48,8 @@ In order to use this code, you need to split your files into a training set and 
 
 Note: It is assumed that the meshes are aligned on beforehand (This can be done manually, using landmarks or simple ICP). Moreover, it is assumed that the meshes have been centered around the origin and scaled in such a way that they fit inside the unit sphere. Lastly, the files should be triangle meshes in .obj file format.
 
+The preprocessing step can be done using the Jupyter Notebook "Data Preprocssing". Simply provide the path to your meshes in the Jupyter Notebook and make a list of the names of the training files and a list of the names of the test files inside the notebook. Then all the meshes will be centered and scaled as well as saved in the respective folders. For more information see the Notebook.
+
 ### Train and Inference
 It is possible to train two different kinds of networks. One network that learns two signals: SSDF and UDF and another network which approximates the GWN. To train the SSDF network, simply go into the folder "your_experiment" and run: 
 
