@@ -66,21 +66,16 @@ python ../../test.py "your_experiment" "ssdf".
 Also, just replace "ssdf" with "gwn", if you want to do inference for the gwn based network.
 
 ### Interpolations
-If you want to interpolate between two different meshes, go to "your_experiment" -> "interpolations" and create a .txt file called "interpolation_samples.txt". In this file, you write on each line the names of the meshes, which you want to interpolate between. E.g: 
-
-Mesh1,Mesh2<br>
-Mesh3,Mesh4
-
-Then you run the interpolations by going to "your_experiment" folder and running: 
+If you want to interpolate between two different meshes, go to "your_experiment" and run the following command:
 
 ```
-python ../../multiple_interpolations.py "your_experiment" "ssdf" "test" n
+python ../../interpolations.py "your_experiment" "ssdf" "test" "file1" "file2" n
 ```
 
-Here n is the number of interpolations including the original meshes. 
+Here "your_experiment" is the name of the folder in which your data is. Similar to before "ssdf" can be exchanged with "gwn", if you want to interpolate between two shapes, where the network uses the "gwn" as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. 
 
 ### Configurations
-If you want to change the configurations for your experiment e.g. the number of epochs, the number of points sampled each for each shape etc., go into the "cfgs" folder, find the file "default.yaml" and change the parameters.
+If you want to change the configurations for your experiment e.g. the number of epochs, the number of points sampled each for each shape etc., go into the "cfgs" folder in "your_experiment" folder, find the file "default.yaml" and change the parameters.
 
 ## Questions and Problems
 If you have any questions or encounter any problems with the code, please do not hesitate to contact me on [tdvc@dtu.dk](tdvc@dtu.dk).
