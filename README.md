@@ -2,7 +2,7 @@
 
 <img src="/images/interpolations.gif" align="center" width="40%"><img src="/images/MGN_SSDF_lv_analysis.png" align="center" width="35%">
 
-This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). In this work we show how it is possible to encode surfaces with boundaries within a simple MLP as the zero level set of a learned Semi-Signed Distance Field. This can be used to represent a variety of shapes, interpolate between shapes (shown in the GIF to the left), cluster shapes according to similiar topology and geometry and to do shape completion.
+This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). In this work we show how it is possible to encode shapes with boundary curves (open surfaces) within a simple MLP and an associated latent space by representing the shapes as the zero level set of a learned Semi-Signed Distance Field. This can be used to represent a variety of shapes, interpolate between shapes (shown in the GIF to the left), cluster shapes according to similiar topology and geometry (shown in the image to the right) and to do shape completion.
 
 For more details about the project, please visit the [project page](https://www.thorshammer.dk/projectpages/ssdf.html) for this work.
 
