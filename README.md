@@ -1,6 +1,6 @@
 # Neural Representation of Open Surfaces
 
-![]([https://github.com/tdvc/Neural-Representation-of-Open-Surfaces/blob/main/images/SSDF_BU_3DFE_interpolations.mp4) | width=100)
+![Interpolation between a pair of pants and a shirt](https://github.com/tdvc/Neural-Representation-of-Open-Surfaces/blob/main/images/SSDF_MGN_interpolations.mp4)
 
 This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). 
 
