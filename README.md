@@ -1,6 +1,6 @@
 # Neural Representation of Open Surfaces
 
-<img src="/images/interpolations.gif" align="center" width="40%">
+<img src="/images/interpolations.gif" align="center" width="40%"><img src="/images/MGN_SSDF_lv_analysis.png" align="center" width="35%">
 
 This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). 
 
