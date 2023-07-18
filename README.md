@@ -1,6 +1,6 @@
 # Neural Representation of Open Surfaces
 
-![Interpolation between a pair of pants and a shirt](/images/MGN_interpolations.gif)
+<img src="/images/interpolations.gif" align="center" width="40%">
 
 This GitHub Repository contains the code behind the paper [Neural Representation of Open Surfaces](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf). 
 
