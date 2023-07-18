@@ -70,7 +70,7 @@ python ../../test.py "your_experiment" "ssdf".
 Also, just replace "ssdf" with "gwn", if you want to do inference for the gwn based network.
 
 ### Surface Reconstruction
-When you are done training, you need to reconstruct the meshes in the training samples in order to find the threshold "k" for the gradient length. See the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details. 
+When you are done training, you need to reconstruct the meshes in the training samples in order to find the threshold "k" for the gradient length. Please see the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details. 
 
 Running surface reconstruction:
 
