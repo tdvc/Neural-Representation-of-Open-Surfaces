@@ -1,0 +1,127 @@
+
+# Configuration file used for setting hyper parameters
+# when training a neural network to represent open
+# surfaces
+
+# ---------------------------------------------------------------------------- #
+# Dataset cfgs
+# ---------------------------------------------------------------------------- #
+dataset:
+  no_surface_points: 2000
+  no_box_points: 1000
+  sample_mean: 0.0
+  sample_std1: 0.05
+  sample_std2: 0.015811
+
+# ---------------------------------------------------------------------------- #
+# Data cfgs
+# ---------------------------------------------------------------------------- #
+dataloader:
+  num_workers: 8
+  num_workers_shape_completion: 8
+
+# ---------------------------------------------------------------------------- #
+# Latent vector cfgs
+# ---------------------------------------------------------------------------- #
+latent_vector:
+  size: 256
+  mean: 0.0
+  std: 0.01
+
+# ---------------------------------------------------------------------------- #
+# Network cfgs
+# ---------------------------------------------------------------------------- #
+network:
+  num_output: 2
+  size_point: 3
+  num_hidden_units: [512,512,512,512,512,512,512,512]
+  multiple_output: 2
+  single_output: 1
+  alpha: 0.000001
+
+# ---------------------------------------------------------------------------- #
+# Optimizer cfgs
+# ---------------------------------------------------------------------------- #
+network_optimizer:
+  learning_rate: 0.0001
+
+lv_optimizer:
+  learning_rate_train: 0.001
+  learning_rate_test: 0.001
+
+# ---------------------------------------------------------------------------- #
+# Models cfgs
+# ---------------------------------------------------------------------------- #
+model_train:
+  name: "model_train.pt"
+  load_best: False
+  load_from_epoch: False
+  epoch_number: 0
+  
+model_test: 
+  name: "model_test.pt"
+  load_best: False
+  load_from_epoch: False
+  epoch_number: 0
+
+model_shape_completion:
+  name: "model_shape_completion.pt"
+  load_best: False
+  load_from_epoch: False
+  epoch_number: 0
+
+# ---------------------------------------------------------------------------- #
+# training and testing parameters cfgs
+# ---------------------------------------------------------------------------- #
+training:
+  num_epochs: 6000
+  batch_size: 10
+
+testing:
+  num_epochs: 5000
+  batch_size: 10
+
+save_model_frequency: 500 # How often to save the model
+save_best_model_frequency: 1 # How often to save the best model
+
+# ---------------------------------------------------------------------------- #
+# Statusfiles cfgs
+# ---------------------------------------------------------------------------- #
+status_file_train: "status_file_train.txt"
+status_file_test: "status_file_test.txt"
+status_file_shape_completion: "statusfile_shape_completion.txt"
+status_file_shape_analysis: "status_file_shape_analysis.txt"
+status_file_shape_reconstruction: "status_file_shape_reconstruction.txt"
+
+# ---------------------------------------------------------------------------- #
+# Surface reconstruction cfgs
+# ---------------------------------------------------------------------------- #
+surface_reconstruction:
+  num_smooth: 2 # How many times the shape should be smoothed
+  num_project: 8 # How many times the vertices should be projected down on the iso-contour
+  num_bisection_iterations: 8
+  iso_value: 0.0 # The iso level contour
+  mesh_resolution: 150
+  chamfer_distance_points: 30000
+  mesh_accuracy_points: 1000
+  mesh_completion_points: 1000
+  num_resolution_increase: 2
+
+# ---------------------------------------------------------------------------- #
+# shape completion cfgs
+# ---------------------------------------------------------------------------- #
+shape_completion:
+  one_side_scan: True
+
+print_frequency: 500
+
+# ---------------------------------------------------------------------------- #
+# Use GPU or not cfgs
+# ---------------------------------------------------------------------------- #
+use_GPU: True # Else set to False
+
+# We support wandb for online results collection, please check their documentation for details: https://docs.wandb.ai/
+wandb:
+  wandb_project: write_your_own_project
+  wandb_notes: ""
+  use_wandb: True
