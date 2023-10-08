@@ -86,14 +86,20 @@ Afterwards you should just run:
 python ../../find_gwn_threshold.py "your_experiment" "ssdf".
 ```
 
-Also, just replace "ssdf" with "gwn", if you want to find the threshold k for the gwn based network.
+Also, just replace "ssdf" with "gwn", if you want to find the threshold 'k' for the gwn based network.
 
-Then you can reconstruct the closed surfaces in the test set by running: 
+Then you can reconstruct the open surfaces (surfaces with boundary curves) of the training samples by running (using either 'ssdf' or 'gwn'): 
+
+```
+python ../../open_shapes.py "your_experiment" "train" "ssdf"
+```
+
+Having completed the steps above, you can reconstruct the surfaces of the test samples by running (agin using either 'ssdf' or 'gwn'): 
 
 ```
 python ../../shape_reconstruction.py "your_experiment" "test" "ssdf"
 ```
-And to recover the true surfaces (the shapes with boundary curves) you need to run: 
+And to recover the surfaces of the test samples (the shapes with boundary curves) you need to run: 
 
 ```
 python ../../open_shapes.py "your_experiment" "test" "ssdf"
@@ -106,7 +112,7 @@ If you want to interpolate between two different meshes, go to "your_experiment"
 python ../../interpolations.py "your_experiment" "ssdf" "test" "file1" "file2" n
 ```
 
-Here "your_experiment" is the name of the folder in which your data is. Similar to before "ssdf" can be exchanged with "gwn", if you want to interpolate between two shapes, where the network uses the "gwn" as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. Notice: Before running the interpolations script, you need to first reconstruct the shapes in the training set and then find the threshold "k". 
+Here "your_experiment" is the name of the folder in which your data is. Similar to before "ssdf" can be exchanged with "gwn", if you want to interpolate between two shapes, where the network uses the "gwn" as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. Notice: Before running the interpolations script, you need to first reconstruct the shapes in the training set and then find the threshold 'k'. 
 
 ### Configurations
 If you want to change the configurations for your experiment e.g. the number of epochs, the number of points sampled each for each shape etc., go into the "cfgs" folder in "your_experiment" folder, find the file "default.yaml" and change the parameters.
