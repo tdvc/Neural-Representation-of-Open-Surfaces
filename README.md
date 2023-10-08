@@ -77,7 +77,7 @@ Running surface reconstruction:
 ```
 python ../../shape_reconstruction.py "your_experiment" "train" "ssdf"
 ```
-If you want to train the GWN network, just replace "ssdf" with "gwn". 
+If you want to reconstruct the surfaces of the training samples for the GWN network, just replace "ssdf" with "gwn". 
 
 ### Finding GWN gradient threshold k
 Afterwards you should just run: 
