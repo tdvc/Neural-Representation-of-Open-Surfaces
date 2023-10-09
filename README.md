@@ -58,18 +58,18 @@ Also note: It is assumed that the format of the 3D files is .obj, .ply or .off
 It is possible to train two different kinds of networks. One network that learns two signals: SSDF and UDF and another network which approximates the GWN (See the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details). To train the SSDF network, simply go into the folder "your_experiment" and run: 
 
 ```
-python ../../train.py "your_experiment" 'ssdf'
+python ../../train.py "your_experiment" "ssdf"'
 ```
 
-If you want to train the GWN network, just replace 'ssdf' with 'gwn'. 
+If you want to train the GWN network, just replace "ssdf"' with "gwn". 
 
 Similarly, if you want to do inference, go into the folder "your_experiment" and run: 
 
 ```
-python ../../test.py "your_experiment" 'ssdf'.
+python ../../test.py "your_experiment" "ssdf"'.
 ```
 
-Also, just replace 'ssdf' with 'gwn', if you want to do inference for the gwn based network.
+Also, just replace "ssdf"' with "gwn", if you want to do inference for the gwn based network.
 
 ### Surface Reconstruction
 When you are done training, you need to reconstruct the meshes in the training samples in order to find the threshold 'k' for the gradient length. Please see the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details. 
@@ -77,44 +77,44 @@ When you are done training, you need to reconstruct the meshes in the training s
 Running surface reconstruction:
 
 ```
-python ../../shape_reconstruction.py "your_experiment" "train" 'ssdf'
+python ../../shape_reconstruction.py "your_experiment" "train" "ssdf"'
 ```
-If you want to reconstruct the surfaces of the training samples for the GWN network, just replace 'ssdf' with 'gwn'. 
+If you want to reconstruct the surfaces of the training samples for the GWN network, just replace "ssdf"' with "gwn". 
 
 ### Finding GWN gradient threshold k
 Afterwards you should just run: 
 
 ```
-python ../../find_gwn_threshold.py "your_experiment" 'ssdf'.
+python ../../find_gwn_threshold.py "your_experiment" "ssdf"'.
 ```
 
-Also, just replace 'ssdf' with 'gwn', if you want to find the threshold 'k' for the gwn based network.
+Also, just replace "ssdf"' with "gwn", if you want to find the threshold 'k' for the gwn based network.
 
-Then you can reconstruct the open surfaces (surfaces with boundary curves) of the training samples by running (using either 'ssdf' or 'gwn'): 
-
-```
-python ../../open_shapes.py "your_experiment" "train" 'ssdf'
-```
-
-Having completed the steps above, you can reconstruct the surfaces of the test samples by running (agin using either 'ssdf' or 'gwn'): 
+Then you can reconstruct the open surfaces (surfaces with boundary curves) of the training samples by running (using either "ssdf"' or "gwn"): 
 
 ```
-python ../../shape_reconstruction.py "your_experiment" "test" 'ssdf'
+python ../../open_shapes.py "your_experiment" "train" "ssdf"'
+```
+
+Having completed the steps above, you can reconstruct the surfaces of the test samples by running (agin using either "ssdf"' or "gwn"): 
+
+```
+python ../../shape_reconstruction.py "your_experiment" "test" "ssdf"'
 ```
 And to recover the surfaces of the test samples (the shapes with boundary curves) you need to run: 
 
 ```
-python ../../open_shapes.py "your_experiment" "test" 'ssdf'
+python ../../open_shapes.py "your_experiment" "test" "ssdf"
 ```
 
 ### Interpolations
 If you want to interpolate between two different meshes, go to "your_experiment" and run the following command:
 
 ```
-python ../../interpolations.py "your_experiment" 'ssdf' "test" "file1" "file2" n
+python ../../interpolations.py "your_experiment" "ssdf"' "test" "file1" "file2" n
 ```
 
-Here "your_experiment" is the name of the folder in which your data is. Similar to before 'ssdf' can be exchanged with 'gwn', if you want to interpolate between two shapes, where the network uses the 'gwn' as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. Notice: Before running the interpolations script, you need to first reconstruct the shapes in the training set and then find the threshold 'k'. 
+Here "your_experiment" is the name of the folder in which your data is. Similar to before "ssdf"' can be exchanged with "gwn", if you want to interpolate between two shapes, where the network uses the "gwn" as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. Notice: Before running the interpolations script, you need to first reconstruct the shapes in the training set and then find the threshold 'k'. 
 
 ### Configurations
 If you want to change the configurations for your experiment e.g. the number of epochs, the number of points sampled each for each shape etc., batch size etc., go into the "cfgs" folder in the 'your_experiment' folder, find the file 'default.yaml' and change the parameters.
