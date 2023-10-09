@@ -46,76 +46,78 @@ pip install -r requirements.txt
 ```
 
 ## Usage 
-In order to use this code, you need to split your files into a training set and a test set. Then you should place the training meshes inside the train folder under experiment -> your experiment -> data -> train. The same thing goes for the test meshes, which should be put into the test folder at the same location as the train folder.
+In order to use this code, you need to split your files (3D objects) into a training set and a test set. Then you should place the training meshes inside the train folder under experiment -> your_experiment -> data -> train. The same thing goes for the test meshes, which should be put into the test folder at the same location as the train folder namely experiment -> your_experiment -> data -> test.
 
-Note: It is assumed that the meshes are aligned on beforehand (This can be done manually, using landmarks or simple ICP). Moreover, it is assumed that the meshes have been centered around the origin and scaled in such a way that they fit inside the unit sphere. Lastly, the files should be triangle meshes in .obj file format.
+Note: It is assumed that the meshes are aligned on beforehand (This can be done manually, using landmarks or simple ICP). Moreover, it is assumed that the meshes have been centered around the origin and scaled in such a way that they all fit inside the unit sphere. Lastly, the files should be triangle meshes in .obj file format.
 
-The preprocessing step can be done using the Jupyter Notebook 'Data Preparation' (Data Preparation.ipynb). Simply provide the path to your meshes in the Jupyter Notebook and make a list of the names of the training files and a list of the names of the test files inside the notebook. Then all the meshes will be centered and scaled as well as saved in the respective folders. For more information see the Notebook.
+The preprocessing step can be done using the Jupyter Notebook 'Data Preparation' (Data Preparation.ipynb). Simply provide a list with the path and the name of your meshes in the Jupyter Notebook e.g. [path/mesh1.obj, path/mesh2.obj, path/mesh3.obj, ...] for the train files and similarly for the test files. Then all the meshes will be centered around the origin and scaled to fit inside the unit sphere as well as saved in the respective folders (train) and (test). For more information see the Notebook.
+
+Also note: It is assumed that the format of the 3D files is .obj, .ply or .off
 
 ### Train and Inference
-It is possible to train two different kinds of networks. One network that learns two signals: SSDF and UDF and another network which approximates the GWN. To train the SSDF network, simply go into the folder "your_experiment" and run: 
+It is possible to train two different kinds of networks. One network that learns two signals: SSDF and UDF and another network which approximates the GWN (See the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details). To train the SSDF network, simply go into the folder "your_experiment" and run: 
 
 ```
-python ../../train.py "your_experiment" "ssdf"
+python ../../train.py "your_experiment" 'ssdf'
 ```
 
-If you want to train the GWN network, just replace "ssdf" with "gwn". 
+If you want to train the GWN network, just replace 'ssdf' with 'gwn'. 
 
 Similarly, if you want to do inference, go into the folder "your_experiment" and run: 
 
 ```
-python ../../test.py "your_experiment" "ssdf".
+python ../../test.py "your_experiment" 'ssdf'.
 ```
 
-Also, just replace "ssdf" with "gwn", if you want to do inference for the gwn based network.
+Also, just replace 'ssdf' with 'gwn', if you want to do inference for the gwn based network.
 
 ### Surface Reconstruction
-When you are done training, you need to reconstruct the meshes in the training samples in order to find the threshold "k" for the gradient length. Please see the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details. 
+When you are done training, you need to reconstruct the meshes in the training samples in order to find the threshold 'k' for the gradient length. Please see the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details. 
 
 Running surface reconstruction:
 
 ```
-python ../../shape_reconstruction.py "your_experiment" "train" "ssdf"
+python ../../shape_reconstruction.py "your_experiment" "train" 'ssdf'
 ```
-If you want to reconstruct the surfaces of the training samples for the GWN network, just replace "ssdf" with "gwn". 
+If you want to reconstruct the surfaces of the training samples for the GWN network, just replace 'ssdf' with 'gwn'. 
 
 ### Finding GWN gradient threshold k
 Afterwards you should just run: 
 
 ```
-python ../../find_gwn_threshold.py "your_experiment" "ssdf".
+python ../../find_gwn_threshold.py "your_experiment" 'ssdf'.
 ```
 
-Also, just replace "ssdf" with "gwn", if you want to find the threshold 'k' for the gwn based network.
+Also, just replace 'ssdf' with 'gwn', if you want to find the threshold 'k' for the gwn based network.
 
 Then you can reconstruct the open surfaces (surfaces with boundary curves) of the training samples by running (using either 'ssdf' or 'gwn'): 
 
 ```
-python ../../open_shapes.py "your_experiment" "train" "ssdf"
+python ../../open_shapes.py "your_experiment" "train" 'ssdf'
 ```
 
 Having completed the steps above, you can reconstruct the surfaces of the test samples by running (agin using either 'ssdf' or 'gwn'): 
 
 ```
-python ../../shape_reconstruction.py "your_experiment" "test" "ssdf"
+python ../../shape_reconstruction.py "your_experiment" "test" 'ssdf'
 ```
 And to recover the surfaces of the test samples (the shapes with boundary curves) you need to run: 
 
 ```
-python ../../open_shapes.py "your_experiment" "test" "ssdf"
+python ../../open_shapes.py "your_experiment" "test" 'ssdf'
 ```
 
 ### Interpolations
 If you want to interpolate between two different meshes, go to "your_experiment" and run the following command:
 
 ```
-python ../../interpolations.py "your_experiment" "ssdf" "test" "file1" "file2" n
+python ../../interpolations.py "your_experiment" 'ssdf' "test" "file1" "file2" n
 ```
 
-Here "your_experiment" is the name of the folder in which your data is. Similar to before "ssdf" can be exchanged with "gwn", if you want to interpolate between two shapes, where the network uses the "gwn" as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. Notice: Before running the interpolations script, you need to first reconstruct the shapes in the training set and then find the threshold 'k'. 
+Here "your_experiment" is the name of the folder in which your data is. Similar to before 'ssdf' can be exchanged with 'gwn', if you want to interpolate between two shapes, where the network uses the 'gwn' as an implicit surface representation. "file1" is the name of the first shape (without the .obj extension), "file2" is the name of the second file you want to interpolate between (again without the .obj extension) and n is the number of interpolations including the original meshes. Notice: Before running the interpolations script, you need to first reconstruct the shapes in the training set and then find the threshold 'k'. 
 
 ### Configurations
-If you want to change the configurations for your experiment e.g. the number of epochs, the number of points sampled each for each shape etc., go into the "cfgs" folder in "your_experiment" folder, find the file "default.yaml" and change the parameters.
+If you want to change the configurations for your experiment e.g. the number of epochs, the number of points sampled each for each shape etc., batch size etc., go into the "cfgs" folder in the 'your_experiment' folder, find the file 'default.yaml' and change the parameters.
 
 ## Questions and Problems
 If you have any questions or encounter any problems with the code, please do not hesitate to contact me on [tdvc@dtu.dk](tdvc@dtu.dk).
