@@ -61,12 +61,12 @@ It is possible to train two different kinds of networks. One network that learns
 python ../../train.py "your_experiment" "ssdf"
 ```
 
-If you want to train the GWN network, just replace "ssdf"' with "gwn". 
+If you want to train the GWN network, just replace "ssdf"' with "gwn"
 
 Similarly, if you want to do inference, go into the folder "your_experiment" and run: 
 
 ```
-python ../../test.py "your_experiment" "ssdf".
+python ../../test.py "your_experiment" "ssdf"
 ```
 
 Also, just replace "ssdf"' with "gwn", if you want to do inference for the gwn based network.
