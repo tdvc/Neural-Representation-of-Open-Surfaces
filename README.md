@@ -58,7 +58,7 @@ Also note: It is assumed that the format of the 3D files is .obj, .ply or .off
 It is possible to train two different kinds of networks. One network that learns two signals: SSDF and UDF and another network which approximates the GWN (See the [paper](https://www.thorshammer.dk/papers/Neural_Representation_of_Open_Surfaces.pdf) for more details). To train the SSDF network, simply go into the folder "your_experiment" and run: 
 
 ```
-python ../../train.py "your_experiment" "ssdf"'
+python ../../train.py "your_experiment" "ssdf"
 ```
 
 If you want to train the GWN network, just replace "ssdf"' with "gwn". 
@@ -66,7 +66,7 @@ If you want to train the GWN network, just replace "ssdf"' with "gwn".
 Similarly, if you want to do inference, go into the folder "your_experiment" and run: 
 
 ```
-python ../../test.py "your_experiment" "ssdf"'.
+python ../../test.py "your_experiment" "ssdf".
 ```
 
 Also, just replace "ssdf"' with "gwn", if you want to do inference for the gwn based network.
@@ -77,7 +77,7 @@ When you are done training, you need to reconstruct the meshes in the training s
 Running surface reconstruction:
 
 ```
-python ../../shape_reconstruction.py "your_experiment" "train" "ssdf"'
+python ../../shape_reconstruction.py "your_experiment" "train" "ssdf"
 ```
 If you want to reconstruct the surfaces of the training samples for the GWN network, just replace "ssdf"' with "gwn". 
 
@@ -85,7 +85,7 @@ If you want to reconstruct the surfaces of the training samples for the GWN netw
 Afterwards you should just run: 
 
 ```
-python ../../find_gwn_threshold.py "your_experiment" "ssdf"'.
+python ../../find_gwn_threshold.py "your_experiment" "ssdf"
 ```
 
 Also, just replace "ssdf"' with "gwn", if you want to find the threshold 'k' for the gwn based network.
@@ -93,13 +93,13 @@ Also, just replace "ssdf"' with "gwn", if you want to find the threshold 'k' for
 Then you can reconstruct the open surfaces (surfaces with boundary curves) of the training samples by running (using either "ssdf"' or "gwn"): 
 
 ```
-python ../../open_shapes.py "your_experiment" "train" "ssdf"'
+python ../../open_shapes.py "your_experiment" "train" "ssdf"
 ```
 
 Having completed the steps above, you can reconstruct the surfaces of the test samples by running (agin using either "ssdf"' or "gwn"): 
 
 ```
-python ../../shape_reconstruction.py "your_experiment" "test" "ssdf"'
+python ../../shape_reconstruction.py "your_experiment" "test" "ssdf"
 ```
 And to recover the surfaces of the test samples (the shapes with boundary curves) you need to run: 
 
