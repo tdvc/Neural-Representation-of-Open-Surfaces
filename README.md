@@ -46,7 +46,7 @@ pip install -r requirements.txt
 ```
 
 ## Usage 
-In order to use this code, you need to split your files (3D objects) into a training set and a test set. Then you should place the training meshes inside the train folder under experiment -> your_experiment -> data -> train. The same thing goes for the test meshes, which should be put into the test folder at the same location as the train folder namely experiment -> your_experiment -> data -> test.
+In order to use this code, you need to split your files (3D objects) into a training set and a test/inference set. Then you should place the training meshes inside the train folder under experiment -> your_experiment -> data -> train. The same thing goes for the test/inference meshes, which should be put into the test folder at the same location as the train folder namely experiment -> your_experiment -> data -> test.
 
 Note: It is assumed that the meshes are aligned on beforehand (This can be done manually, using landmarks or simple ICP). Moreover, it is assumed that the meshes have been centered around the origin and scaled in such a way that they all fit inside the unit sphere. Lastly, the files should be triangle meshes in .obj file format.
 
@@ -96,12 +96,12 @@ Then you can reconstruct the open surfaces (surfaces with boundary curves) of th
 python ../../open_shapes.py "your_experiment" "train" "ssdf"
 ```
 
-Having completed the steps above, you can reconstruct the surfaces of the test samples by running (agin using either "ssdf"' or "gwn"): 
+Having completed the steps above, you can reconstruct the surfaces of the test/inference samples by running (agin using either "ssdf"' or "gwn"): 
 
 ```
 python ../../shape_reconstruction.py "your_experiment" "test" "ssdf"
 ```
-And to recover the surfaces of the test samples (the shapes with boundary curves) you need to run: 
+And to recover the surfaces of the test/inference samples (the shapes with boundary curves) you need to run: 
 
 ```
 python ../../open_shapes.py "your_experiment" "test" "ssdf"
